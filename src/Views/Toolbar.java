@@ -17,6 +17,9 @@ public class Toolbar extends JPanel {
     private JComponent sidesEditor;
     private JComponent shapesEditor;
     private JComponent strokeEditor;
+    private JLabel sidesModelLabel;
+    private JLabel shapeModelLabel;
+    private JLabel strokeModelLabel;
 
     private void initToolbarComponents() {
         drawButton = new JButton("Draw");
@@ -36,14 +39,20 @@ public class Toolbar extends JPanel {
         sidesNumber.setEditor(sidesEditor);
         shapesNumber.setEditor(shapesEditor);
         strokeNumber.setEditor(strokeEditor);
-
+        
+        sidesModelLabel = new JLabel("Sides");
+        shapeModelLabel = new JLabel("Shape");
+        strokeModelLabel = new JLabel("Stroke");
     }
 
     private void setToolbarComponents() {
         this.setLayout(new FlowLayout());
 
+        this.add(sidesModelLabel);
         this.add(sidesNumber);
+        this.add(shapeModelLabel);
         this.add(shapesNumber);
+        this.add(strokeModelLabel);
         this.add(strokeNumber);
         this.add(drawButton);
     }
