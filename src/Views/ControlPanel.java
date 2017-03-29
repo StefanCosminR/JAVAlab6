@@ -9,6 +9,9 @@ import java.awt.FlowLayout;
  * Created by stefanromanescu on 29/03/17.
  */
 public class ControlPanel extends JPanel {
+
+    private static ControlPanel instance;
+
     private JButton saveButton;
     private JButton loadButton;
     private JButton resetButton;
@@ -27,8 +30,15 @@ public class ControlPanel extends JPanel {
         this.add(resetButton);
     }
 
-    ControlPanel() {
+    private ControlPanel() {
         initControlPanelComponents();
         setControlPanelComponents();
+    }
+
+    public ControlPanel getInstance() {
+        if(instance == null) {
+            instance = new ControlPanel();
+        }
+        return instance;
     }
 }
