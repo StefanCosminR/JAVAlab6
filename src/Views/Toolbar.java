@@ -64,12 +64,12 @@ public class Toolbar extends JPanel {
         this.add(drawButton);
     }
 
-    Toolbar() {
+    private Toolbar() {
         initToolbarComponents();
         setToolbarComponents();
     }
 
-    public Toolbar getInstance() {
+    public static Toolbar getInstance() {
         if(instance == null) {
             return new Toolbar();
         }

@@ -13,18 +13,26 @@ import java.util.Random;
  */
 public class Canvas extends JPanel {
 
+    private static Canvas canvas;
     private Color canvasColor;
     private Random random;
     private Graphics graphics;
     
-    Canvas() {
+    private Canvas() {
         random = new Random();
         canvasColor = new Color(59, 114, 231); 
         
         this.setBackground(canvasColor);
-        this.addMouseListener(new CanvasMouseAdapter(this));
+        this.addMouseListener(new CanvasMouseAdapter());
     }
         
+    public static Canvas getInstance() {
+        if(canvas == null) {
+            canvas = new Canvas();
+        }
+        return canvas;
+    }
+    
     public void drawShapeAt(int x, int y) {
         int randomColor = random.nextInt(0xFFFFFF);
         int radius = this.getHeight() / 2 - random.nextInt(this.getHeight() / 2 - 1);

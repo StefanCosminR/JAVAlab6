@@ -21,6 +21,6 @@ public class MainFrame extends JFrame {
 
         this.getContentPane().add(toolbar.getInstance(), BorderLayout.NORTH);
         this.getContentPane().add(controlPanel.getInstance(), BorderLayout.SOUTH);
-        this.getContentPane().add(new Canvas(), BorderLayout.CENTER);
+        this.getContentPane().add(Canvas.getInstance(), BorderLayout.CENTER);
     }
 }

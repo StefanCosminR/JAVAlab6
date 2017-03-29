@@ -35,7 +35,7 @@ public class ControlPanel extends JPanel {
         setControlPanelComponents();
     }
 
-    public ControlPanel getInstance() {
+    public static ControlPanel getInstance() {
         if(instance == null) {
             instance = new ControlPanel();
         }
