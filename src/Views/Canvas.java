@@ -27,19 +27,17 @@ public class Canvas extends JPanel {
         
     public void drawShapeAt(int x, int y) {
         int randomColor = random.nextInt(0xFFFFFF);
-        int radius = this.getHeight() - random.nextInt(this.getHeight() - 1);
-        int xOrigin = random.nextInt(this.getHeight());
-        int yOrigin = random.nextInt(this.getHeight());
+        int radius = this.getHeight() / 2 - random.nextInt(this.getHeight() / 2 - 1);
         int sides = random.nextInt(10);
         
         graphics = this.getGraphics();
         graphics.setColor(new Color(randomColor));
-        graphics.fillPolygon(new RegularPolygon(xOrigin, yOrigin, radius, sides));
+        graphics.fillPolygon(new RegularPolygon(x, y, radius, sides));
     }
     
     public void drawShapeAt(int x, int y, int sides) {
         int randomColor = random.nextInt(0xFFFFFF);
-        int radius = this.getHeight() - random.nextInt(this.getHeight() - 1);
+        int radius = this.getHeight() / 2 - random.nextInt(this.getHeight() / 2 - 1);
         
         graphics = this.getGraphics();
         graphics.setColor(new Color(randomColor));
