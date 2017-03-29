@@ -8,15 +8,15 @@ import java.awt.*;
  */
 public class Toolbar extends JPanel {
     private JButton drawButton;
-    SpinnerModel sidesModel;
-    SpinnerModel shapesModel;
-    SpinnerModel strokeModel;
-    JSpinner sidesNumber;
-    JSpinner shapesNumber;
-    JSpinner strokeNumber;
-    JComponent sidesEditor;
-    JComponent shapesEditor;
-    JComponent strokeEditor;
+    private SpinnerModel sidesModel;
+    private SpinnerModel shapesModel;
+    private SpinnerModel strokeModel;
+    private JSpinner sidesNumber;
+    private JSpinner shapesNumber;
+    private JSpinner strokeNumber;
+    private JComponent sidesEditor;
+    private JComponent shapesEditor;
+    private JComponent strokeEditor;
 
     private void initToolbarComponents() {
         drawButton = new JButton("Drow");
