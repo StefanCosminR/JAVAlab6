@@ -14,6 +14,8 @@ public class MainFrame extends JFrame {
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
+        this.getContentPane().add(new Toolbar());
         this.getContentPane().add(new ControlPanel(), BorderLayout.SOUTH);
     }
 }
