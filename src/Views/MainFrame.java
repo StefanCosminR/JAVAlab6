@@ -1,7 +1,8 @@
 package Views;
 
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
 
 /**
  * Created by stefanromanescu on 29/03/17.

@@ -1,22 +1,23 @@
 package Views;
 
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JComponent;
+import java.awt.FlowLayout;
 
 /**
  * Created by stefanromanescu on 29/03/17.
  */
 public class Toolbar extends JPanel {
     private JButton drawButton;
-    private SpinnerModel sidesModel;
-    private SpinnerModel shapesModel;
-    private SpinnerModel strokeModel;
     private JSpinner sidesNumber;
     private JSpinner shapesNumber;
     private JSpinner strokeNumber;
-    private JComponent sidesEditor;
-    private JComponent shapesEditor;
-    private JComponent strokeEditor;
     private JLabel sidesModelLabel;
     private JLabel shapeModelLabel;
     private JLabel strokeModelLabel;
@@ -24,24 +25,24 @@ public class Toolbar extends JPanel {
     private void initToolbarComponents() {
         drawButton = new JButton("Draw");
 
-        sidesModel = new SpinnerNumberModel(0, 0, 10, .1);
-        shapesModel = new SpinnerNumberModel(0, 0, 10, .1);
-        strokeModel = new SpinnerNumberModel(0, 0, 10, .1);
+        SpinnerModel sidesModel = new SpinnerNumberModel(0, 0, 10, .1);
+        SpinnerModel shapesModel = new SpinnerNumberModel(0, 0, 10, .1);
+        SpinnerModel strokeModel = new SpinnerNumberModel(0, 0, 10, .1);
 
         sidesNumber = new JSpinner(sidesModel);
         shapesNumber = new JSpinner(shapesModel);
         strokeNumber = new JSpinner(strokeModel);
 
-        sidesEditor = new JSpinner.NumberEditor(sidesNumber, "#,##0.###");
-        shapesEditor = new JSpinner.NumberEditor(shapesNumber, "#,##0.###");
-        strokeEditor = new JSpinner.NumberEditor(strokeNumber, "#,##0.###");
+        JComponent sidesEditor = new JSpinner.NumberEditor(sidesNumber, "#,##0.###");
+        JComponent shapesEditor = new JSpinner.NumberEditor(shapesNumber, "#,##0.###");
+        JComponent strokeEditor = new JSpinner.NumberEditor(strokeNumber, "#,##0.###");
 
         sidesNumber.setEditor(sidesEditor);
         shapesNumber.setEditor(shapesEditor);
         strokeNumber.setEditor(strokeEditor);
         
         sidesModelLabel = new JLabel("Sides");
-        shapeModelLabel = new JLabel("Shape");
+        shapeModelLabel = new JLabel("Shapes");
         strokeModelLabel = new JLabel("Stroke");
     }
 

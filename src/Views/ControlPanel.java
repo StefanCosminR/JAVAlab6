@@ -1,7 +1,9 @@
 package Views;
 
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
 
 /**
  * Created by stefanromanescu on 29/03/17.
