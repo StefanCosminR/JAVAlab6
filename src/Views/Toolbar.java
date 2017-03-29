@@ -19,7 +19,7 @@ public class Toolbar extends JPanel {
     private JComponent strokeEditor;
 
     private void initToolbarComponents() {
-        drawButton = new JButton("Drow");
+        drawButton = new JButton("Draw");
 
         sidesModel = new SpinnerNumberModel(0, 0, 10, .1);
         shapesModel = new SpinnerNumberModel(0, 0, 10, .1);

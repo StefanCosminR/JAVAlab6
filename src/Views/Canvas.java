@@ -8,4 +8,7 @@ import java.awt.*;
  */
 public class Canvas extends JPanel {
 
+      Canvas() {
+          this.setBackground(Color.red);
+      }
 }
