@@ -6,6 +6,8 @@
 package Listeners;
 
 import Views.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,15 +18,19 @@ import java.awt.event.ActionListener;
 public class ResetButtonListener implements ActionListener {
 
     private Canvas canvas;
-
+    private Color canvasOriginalColor;
+    
     public ResetButtonListener() {
         canvas = Canvas.getInstance();
+        canvasOriginalColor = new Color(59, 114, 231);
     }
     
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       canvas.getGraphics().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+       Graphics graphics = canvas.getGraphics();
+       graphics.setColor(canvasOriginalColor);
+       graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
     
 }

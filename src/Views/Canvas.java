@@ -20,7 +20,7 @@ public class Canvas extends JPanel {
     
     private Canvas() {
         random = new Random();
-        canvasColor = new Color(59, 114, 231); 
+        canvasColor = new Color(59, 114, 231);
         
         this.setBackground(canvasColor);
         this.addMouseListener(new CanvasMouseAdapter());
