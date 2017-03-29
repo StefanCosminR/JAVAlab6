@@ -1,6 +1,8 @@
 package Views;
 
 
+import Listeners.DrawButtonListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,6 +16,9 @@ import java.awt.FlowLayout;
  * Created by stefanromanescu on 29/03/17.
  */
 public class Toolbar extends JPanel {
+
+    private static Toolbar instance;
+
     private JButton drawButton;
     private JSpinner sidesNumber;
     private JSpinner shapesNumber;
@@ -25,8 +30,8 @@ public class Toolbar extends JPanel {
     private void initToolbarComponents() {
         drawButton = new JButton("Draw");
 
-        SpinnerModel sidesModel = new SpinnerNumberModel(0, 0, 10, .1);
-        SpinnerModel shapesModel = new SpinnerNumberModel(0, 0, 10, .1);
+        SpinnerModel sidesModel = new SpinnerNumberModel(0, 0, 10, 1);
+        SpinnerModel shapesModel = new SpinnerNumberModel(0, 0, 10, 1);
         SpinnerModel strokeModel = new SpinnerNumberModel(0, 0, 10, .1);
 
         sidesNumber = new JSpinner(sidesModel);
@@ -55,11 +60,31 @@ public class Toolbar extends JPanel {
         this.add(shapesNumber);
         this.add(strokeModelLabel);
         this.add(strokeNumber);
+        drawButton.addActionListener(new DrawButtonListener(this));
         this.add(drawButton);
     }
 
-    Toolbar() {
+    private Toolbar() {
         initToolbarComponents();
         setToolbarComponents();
+    }
+
+    public static Toolbar getInstance() {
+        if(instance == null) {
+            return new Toolbar();
+        }
+        return instance;
+    }
+
+    public Integer getSidesNumber() {
+        return (Integer) this.sidesNumber.getValue();
+    }
+
+    public Integer getShapesNumber() {
+        return (Integer) this.shapesNumber.getValue();
+    }
+
+    public Double getStrokeNumber() {
+        return (Double) this.strokeNumber.getValue();
     }
 }
