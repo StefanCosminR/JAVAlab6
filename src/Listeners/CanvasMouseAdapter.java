@@ -15,13 +15,7 @@ import java.awt.event.MouseEvent;
  */
 public class CanvasMouseAdapter extends MouseAdapter {
     
-    private Canvas canvas;
-    
-    public CanvasMouseAdapter(Canvas canvas) {
-        this.canvas = canvas;
-    }
-    
     public void mouseClicked(MouseEvent e) {
-        canvas.drawShapeAt(e.getX(), e.getY());
+        Canvas.getInstance().drawShapeAt(e.getX(), e.getY());
     }
 }
