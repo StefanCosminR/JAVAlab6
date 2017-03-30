@@ -54,7 +54,7 @@ public class Toolbar extends JPanel {
         this.add(shapesNumber);
         this.add(strokeModelLabel);
         this.add(strokeNumber);
-        drawButton.addActionListener(new DrawButtonListener());
+        drawButton.addActionListener(new DrawButtonListener(this));
         this.add(drawButton);
     }
 

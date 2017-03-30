@@ -14,20 +14,21 @@ public class DrawButtonListener implements ActionListener {
     Toolbar toolbar;
     Canvas canvas;
 
-    public DrawButtonListener() {
-        toolbar = Toolbar.getInstance();
+    public DrawButtonListener(Toolbar toolbar) {
+        this.toolbar = toolbar;
         canvas = Canvas.getInstance();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       // Integer sides = toolbar.getSidesNumber();
-      //  Integer shapes = toolbar.getShapesNumber();
-      //  Double stroke = toolbar.getStrokeNumber();
+        Integer sides = toolbar.getSidesNumber();
+        Integer shapes = toolbar.getShapesNumber();
+        Double stroke = toolbar.getStrokeNumber();
 
-      //  for(int i = 0; i < shapes; ++i) {
-      //      System.out.println(sides);
-      //  }
+        for(int i = 0; i < shapes; ++i) {
+
+            canvas.drawShapeAtRandom(sides, stroke);
+        }
 
     }
 }
