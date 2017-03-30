@@ -3,13 +3,7 @@ package Views;
 
 import Listeners.DrawButtonListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.awt.FlowLayout;
 
 /**
@@ -60,7 +54,7 @@ public class Toolbar extends JPanel {
         this.add(shapesNumber);
         this.add(strokeModelLabel);
         this.add(strokeNumber);
-        drawButton.addActionListener(new DrawButtonListener(this));
+        drawButton.addActionListener(new DrawButtonListener());
         this.add(drawButton);
     }
 
@@ -71,7 +65,7 @@ public class Toolbar extends JPanel {
 
     public static Toolbar getInstance() {
         if(instance == null) {
-            return new Toolbar();
+            instance = new Toolbar();
         }
         return instance;
     }

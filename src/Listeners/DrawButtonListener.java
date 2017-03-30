@@ -1,5 +1,6 @@
 package Listeners;
 
+import Views.Canvas;
 import Views.Toolbar;
 
 import java.awt.event.ActionEvent;
@@ -10,21 +11,23 @@ import java.awt.event.ActionListener;
  */
 public class DrawButtonListener implements ActionListener {
 
-    Toolbar view;
+    Toolbar toolbar;
+    Canvas canvas;
 
-    public DrawButtonListener(Object o) {
-        view = (Toolbar) o;
+    public DrawButtonListener() {
+        toolbar = Toolbar.getInstance();
+        canvas = Canvas.getInstance();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Integer sides = view.getSidesNumber();
-        Integer shapes = view.getShapesNumber();
-        Double stroke = view.getStrokeNumber();
+       // Integer sides = toolbar.getSidesNumber();
+      //  Integer shapes = toolbar.getShapesNumber();
+      //  Double stroke = toolbar.getStrokeNumber();
 
-        for(int i = 0; i < shapes; ++i) {
-            System.out.println(sides);
-        }
+      //  for(int i = 0; i < shapes; ++i) {
+      //      System.out.println(sides);
+      //  }
 
     }
 }
