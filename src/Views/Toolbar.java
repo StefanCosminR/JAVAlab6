@@ -71,7 +71,7 @@ public class Toolbar extends JPanel {
 
     public static Toolbar getInstance() {
         if(instance == null) {
-            return new Toolbar();
+            instance = new Toolbar();
         }
         return instance;
     }
