@@ -3,13 +3,7 @@ package Views;
 
 import Listeners.DrawButtonListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.awt.FlowLayout;
 
 /**

@@ -3,10 +3,9 @@ package Views;
 
 import Listeners.CanvasMouseAdapter;
 import Shapes.RegularPolygon;
+
 import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -38,11 +37,16 @@ public class Canvas extends JPanel {
     }
     
     private void drawPolygon(Graphics g, Color color, RegularPolygon polygon) {
-        g.setColor(color);
-        g.fillPolygon(polygon);
+       // g.setColor(color);
+       // g.fillPolygon(polygon);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(color);
+        g2.fillPolygon(polygon);
+        g2.setStroke(new BasicStroke(2.0f));
     }
     
     public void drawShapeAt(int x, int y) {
+
         int randomColor = random.nextInt(0xFFFFFF);
         int radius = this.getHeight() / 2 - random.nextInt(this.getHeight() / 2 - 1);
         int sides = random.nextInt(10);
@@ -59,6 +63,19 @@ public class Canvas extends JPanel {
         RegularPolygon polygon = new RegularPolygon(x, y, radius, sides);
         Color color = new Color(randomColor);
         
+        drawPolygon(this.getGraphics(), color, polygon);
+        drawPolygon(image.getGraphics(), color, polygon);
+    }
+
+    public void drawShapeAtRandom(int sides, double stroke) {
+        int randomX = (int) Math.floor(Math.random() * this.getWidth());
+        int randomY = (int) Math.floor(Math.random() * this.getHeight());
+
+        int randomColor = random.nextInt(0xFFFFFF);
+        int radius = this.getHeight() / 2 - random.nextInt(this.getHeight() / 2 - 1);
+        RegularPolygon polygon = new RegularPolygon(randomX, randomY, radius, sides);
+        Color color = new Color(randomColor);
+
         drawPolygon(this.getGraphics(), color, polygon);
         drawPolygon(image.getGraphics(), color, polygon);
     }
