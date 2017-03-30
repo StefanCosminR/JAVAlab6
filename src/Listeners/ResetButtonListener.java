@@ -28,7 +28,13 @@ public class ResetButtonListener implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       Graphics graphics = canvas.getGraphics();
+       Graphics graphics;
+       
+       graphics = canvas.getGraphics();
+       graphics.setColor(canvasOriginalColor);
+       graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+       
+       graphics = canvas.getImage().getGraphics();
        graphics.setColor(canvasOriginalColor);
        graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
