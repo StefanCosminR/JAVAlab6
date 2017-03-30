@@ -3,6 +3,7 @@ package Views;
 
 import Listeners.LoadButtonListener;
 import Listeners.ResetButtonListener;
+import Listeners.SaveButtonListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
@@ -27,6 +28,7 @@ public class ControlPanel extends JPanel {
     private void setControlPanelComponents() {
         this.setLayout(new FlowLayout());
 
+        saveButton.addActionListener(new SaveButtonListener());
         this.add(saveButton);
         loadButton.addActionListener(new LoadButtonListener());
         this.add(loadButton);

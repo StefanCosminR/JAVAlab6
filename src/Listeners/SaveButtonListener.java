@@ -6,12 +6,13 @@
 package Listeners;
 
 import Views.Canvas;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -19,33 +20,32 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author dragos
  */
-public class LoadButtonListener implements ActionListener {
+public class SaveButtonListener implements ActionListener {
 
-    private JFileChooser loadDialog;
-    private Canvas canvas;
+    private JFileChooser saveDialog;
     private FileNameExtensionFilter filter;
+    private Canvas canvas;
     private BufferedImage image;
     
-    public LoadButtonListener() {
-        loadDialog = new JFileChooser();
-        canvas = Canvas.getInstance();
+    public SaveButtonListener() {
+        saveDialog = new JFileChooser();
         filter = new FileNameExtensionFilter("image type", "jpg", "png", "jpeg", "gif");
+        canvas = Canvas.getInstance();
         
-        loadDialog.setFileFilter(filter);
+        saveDialog.setFileFilter(filter);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         int returnValue;
-        File loadFile;
+        File saveFile;
         
         try {
-            returnValue = loadDialog.showOpenDialog(null);
+            returnValue = saveDialog.showSaveDialog(null);
             if(returnValue == JFileChooser.APPROVE_OPTION) {
-                loadFile = loadDialog.getSelectedFile();
-                image = ImageIO.read(loadFile);
-                canvas.getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
-                canvas.getImage().getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
+                saveFile = saveDialog.getSelectedFile();
+                image = canvas.getImage();
+                ImageIO.write(image, "png", saveFile);
             }
         }
         catch (IOException ex) {
