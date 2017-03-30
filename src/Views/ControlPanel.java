@@ -1,6 +1,7 @@
 package Views;
 
 
+import Listeners.LoadButtonListener;
 import Listeners.ResetButtonListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -27,6 +28,7 @@ public class ControlPanel extends JPanel {
         this.setLayout(new FlowLayout());
 
         this.add(saveButton);
+        loadButton.addActionListener(new LoadButtonListener());
         this.add(loadButton);
         resetButton.addActionListener(new ResetButtonListener());
         this.add(resetButton);
