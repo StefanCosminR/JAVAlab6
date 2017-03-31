@@ -5,8 +5,8 @@
  */
 package Views;
 
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 /**
  *
@@ -17,13 +17,16 @@ public class IOPanel extends JPanel {
     private static IOPanel instance;
     private ControlPanel controlPanel;
     private MathExpressionInput expression;
+    private InterpolationPoints interpolationPoints;
     
     private IOPanel() {
         controlPanel = ControlPanel.getInstance();
         expression = MathExpressionInput.getInstance();
+        interpolationPoints = InterpolationPoints.getInstance();
         
         this.setLayout(new BorderLayout());
-        this.add(expression, BorderLayout.NORTH);
+        this.add(interpolationPoints, BorderLayout.NORTH);
+        this.add(expression, BorderLayout.CENTER);
         this.add(controlPanel, BorderLayout.SOUTH);
     }
     

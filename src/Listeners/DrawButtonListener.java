@@ -26,9 +26,7 @@ public class DrawButtonListener implements ActionListener {
         Double stroke = toolbar.getStrokeNumber();
 
         for(int i = 0; i < shapes; ++i) {
-
             canvas.drawShapeAtRandom(sides, stroke);
         }
-
     }
 }
