@@ -56,7 +56,7 @@ public class SvgSaveButtonListener implements ActionListener {
                 saveFile = saveDialog.getSelectedFile();
                 image = canvas.getImage();
                 saveFileStream = new FileOutputStream(saveFile);
-                svgGenerator.stream(saveFileStream);
+                //svgGenerator.stream(saveFileStream);
             }
         }
         catch (IOException ex) {
