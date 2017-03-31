@@ -10,8 +10,8 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Random;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  * Created by stefanromanescu on 29/03/17.
  */
@@ -56,6 +56,7 @@ public class Canvas extends JPanel {
         g2.setColor(color);
         g2.fillPolygon(polygon);
         g2.setStroke(new BasicStroke(2.0f));
+
     }
 
     public void drawShapeAt(int x, int y) {
