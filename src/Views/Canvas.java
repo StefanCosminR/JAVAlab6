@@ -10,8 +10,8 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.Random;
+import java.util.ArrayList;
 /**
  * Created by stefanromanescu on 29/03/17.
  */
@@ -118,17 +118,17 @@ public class Canvas extends JPanel {
         StringBuilder expression = new StringBuilder();
 
         int expSize = f.length;
+
         for (int i = 0; i < expSize - 1; ++i) {
             expression.append(f[i])
-                    .append(" * x ^ ")
-                    .append(expSize - i - 1)
-                    .append(" + ");
+            .append(" * x ^ ")
+                    .append(expSize -i - 1)
+            .append(" + ");
         }
 
         expression.append(f[expSize - 1]);
 
-       drawFunctionGraph(expression.toString());
-
+        drawFunctionGraph(expression.toString());
     }
 
     private double[] findPolynomialFactors (double[] x, double[] y)
