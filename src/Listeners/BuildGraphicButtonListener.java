@@ -25,7 +25,7 @@ public class BuildGraphicButtonListener implements ActionListener {
     private Graphics2D canvasGraphics;
     private Graphics2D canvasImageGraphics; 
     private Expression exp;
-    private final int SCALE = 5;
+    private final int SCALE = 20;
     private final int FUNCTION_TEST_COUNT = 1000;
     private double xValues[];
     private double yValues[];
@@ -36,7 +36,7 @@ public class BuildGraphicButtonListener implements ActionListener {
         xValues = new double[FUNCTION_TEST_COUNT];
         yValues = new double[FUNCTION_TEST_COUNT];
     }
-    
+        
     private void drawAxis(Graphics2D g) {
         //draw OY axis
         g.drawLine(canvas.getWidth() / 2, 0, canvas.getWidth() / 2, canvas.getWidth());
@@ -71,7 +71,7 @@ public class BuildGraphicButtonListener implements ActionListener {
                 yValue += 1.0 / SCALE;
                 
                 xValues[test] *= SCALE;
-                yValues[test] *= SCALE;
+                yValues[test] *= -SCALE;
             }
             
             for(test = 0; test < FUNCTION_TEST_COUNT - 1; ++test) {
