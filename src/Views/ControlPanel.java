@@ -4,6 +4,7 @@ package Views;
 import Listeners.LoadButtonListener;
 import Listeners.ResetButtonListener;
 import Listeners.SaveButtonListener;
+import Listeners.SvgSaveButtonListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
@@ -18,11 +19,13 @@ public class ControlPanel extends JPanel {
     private JButton saveButton;
     private JButton loadButton;
     private JButton resetButton;
+    private JButton svgSaveButton;
 
     private void initControlPanelComponents() {
         saveButton = new JButton("Save");
         loadButton = new JButton("Load");
         resetButton = new JButton("Reset");
+        svgSaveButton = new JButton("SVG Save");
     }
 
     private void setControlPanelComponents() {
@@ -34,6 +37,8 @@ public class ControlPanel extends JPanel {
         this.add(loadButton);
         resetButton.addActionListener(new ResetButtonListener());
         this.add(resetButton);
+        svgSaveButton.addActionListener(new SvgSaveButtonListener());
+        this.add(svgSaveButton);
     }
 
     private ControlPanel() {

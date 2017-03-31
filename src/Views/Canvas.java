@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+
 /**
  * Created by stefanromanescu on 29/03/17.
  */
@@ -197,5 +198,5 @@ public class Canvas extends JPanel {
     public BufferedImage getImage() {
         return image;
     }
-
+    
 }
