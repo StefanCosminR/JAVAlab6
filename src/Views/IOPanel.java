@@ -17,15 +17,15 @@ public class IOPanel extends JPanel {
     private static IOPanel instance;
     private ControlPanel controlPanel;
     private MathExpressionInput expression;
-    private InterpolationPoints interpolationPoints;
+    private InterpolationPointsInput interpolationPointsInput;
     
     private IOPanel() {
         controlPanel = ControlPanel.getInstance();
         expression = MathExpressionInput.getInstance();
-        interpolationPoints = InterpolationPoints.getInstance();
+        interpolationPointsInput = InterpolationPointsInput.getInstance();
         
         this.setLayout(new BorderLayout());
-        this.add(interpolationPoints, BorderLayout.NORTH);
+        this.add(interpolationPointsInput, BorderLayout.NORTH);
         this.add(expression, BorderLayout.CENTER);
         this.add(controlPanel, BorderLayout.SOUTH);
     }

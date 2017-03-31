@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
-
+import java.util.ArrayList;
 /**
  * Created by stefanromanescu on 29/03/17.
  */
@@ -93,30 +93,42 @@ public class Canvas extends JPanel {
         drawPolygon(image.getGraphics(), color, polygon);
     }
 
-    public void drawLineBetweenPoints(Integer... points){
+    public void drawLineBetweenPoints(ArrayList<Double> input){
 
-        double x[] = {4.1168, 4.19236, 4.20967, 4.46908};
-        double y[] = {0.213631, 0.214232, 0.21441, 0.218788};
+        int size = input.size();
+
+        double x[] = new double[size / 2];
+        double y[] = new double[size / 2];
+
+        int xi = 0;
+        int yi = 0;
+
+        for(int i = 0; i < size; ++i) {
+            if(i % 2 == 0) {
+                x[xi++] = input.get(i);
+            }
+            else {
+                y[yi++] = input.get(i);
+            }
+        }
+
 
         double f[] = findPolynomialFactors (x, y);
 
-//        for (int i = 0; i < 4; i++)
-//            System.out.println (f[i]);
+        StringBuilder expression = new StringBuilder();
 
-        /*
-        ArrayList<Integer> scores = new ArrayList<Integer>(10);
-        Random r = new Random();
-        for(int i = 0; i < 10; ++i) {
-            scores.add(r.nextInt(20));
+        int expSize = f.length;
+
+        for (int i = 0; i < expSize - 1; ++i) {
+            expression.append(f[i])
+            .append(" * x ^ ")
+                    .append(expSize -i - 1)
+            .append(" + ");
         }
-        int y1;
-        int y2;
-        for (int i = 0; i < scores.size() - 1; i++) {
-            y1 = (scores.get(i)) * 10;
-            y2 = (scores.get(i + 1)) * 10;
-            g2.drawLine(i * 10, y1, (i + 1) * 10, y2);
-        }
-        */
+
+        expression.append(f[expSize - 1]);
+
+        drawFunctionGraph(expression.toString());
     }
 
     private double[] findPolynomialFactors (double[] x, double[] y)
@@ -139,7 +151,6 @@ public class Canvas extends JPanel {
         Matrix m = new Matrix(data);
         Matrix b = new Matrix(rhs, n);
 
-        m.solve(b).print(5, 5);
         Matrix s = m.solve(b);
 
         return s.getRowPackedCopy();
@@ -198,5 +209,5 @@ public class Canvas extends JPanel {
     public BufferedImage getImage() {
         return image;
     }
-    
+
 }

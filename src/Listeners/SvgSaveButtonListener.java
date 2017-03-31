@@ -6,14 +6,16 @@
 package Listeners;
 
 import Views.Canvas;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.batik.dom.GenericDOMImplementation;
+import org.apache.batik.svggen.SVGGeneratorContext;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -42,16 +44,33 @@ public class SvgSaveButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int returnValue;
         File saveFile;
-        Graphics svgGraphics;
         DOMImplementation domImplementation = GenericDOMImplementation.getDOMImplementation();
         Document document = domImplementation.createDocument(null, "svg", null);
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-     
-        returnValue = saveDialog.showSaveDialog(null);
-        if(returnValue == JFileChooser.APPROVE_OPTION) {
-            saveFile = saveDialog.getSelectedFile();
-            image = canvas.getImage();
-            
+        SVGGeneratorContext svgContext = SVGGeneratorContext.createDefault(document);
+        SVGGraphics2D svgGenerator = new SVGGraphics2D(svgContext, true);
+        FileOutputStream saveFileStream = null;
+        
+        try {
+            returnValue = saveDialog.showSaveDialog(null);
+            if(returnValue == JFileChooser.APPROVE_OPTION) {
+                saveFile = saveDialog.getSelectedFile();
+                image = canvas.getImage();
+                saveFileStream = new FileOutputStream(saveFile);
+                svgGenerator.stream(saveFileStream);
+            }
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        finally {
+            if(saveFileStream != null) {
+                try {
+                    saveFileStream.close();
+                }
+                catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
     }
     
