@@ -7,7 +7,6 @@ package Listeners;
 
 import Views.Canvas;
 import org.apache.batik.dom.GenericDOMImplementation;
-import org.apache.batik.svggen.SVGGeneratorContext;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -32,7 +31,6 @@ public class SvgSaveButtonListener implements ActionListener {
     private JFileChooser saveDialog;
     private FileNameExtensionFilter filter;
     private BufferedImage image;
-    private BufferedImage svgImage;
     
     public SvgSaveButtonListener() {
         canvas = Canvas.getInstance();
@@ -46,33 +44,42 @@ public class SvgSaveButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int returnValue;
         File saveFile;
+        
         DOMImplementation domImplementation = GenericDOMImplementation.getDOMImplementation();
-        Document document = domImplementation.createDocument(null, "svg", null);
-        SVGGeneratorContext svgContext = SVGGeneratorContext.createDefault(document);
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(svgContext, true);
+        Document document = domImplementation.createDocument(null, "svg", null);        
+        SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+        
         FileOutputStream saveFileStream = null;
+        OutputStreamWriter outputStream = null;
         
         try {
+            svgGenerator.setSVGCanvasSize(canvas.getSize());
             returnValue = saveDialog.showSaveDialog(null);
+            
             if(returnValue == JFileChooser.APPROVE_OPTION) {
                 saveFile = saveDialog.getSelectedFile();
                 image = canvas.getImage();
+                svgGenerator.drawImage(image, 0, 0, null);
                 saveFileStream = new FileOutputStream(saveFile);
-                OutputStreamWriter outputStream = new OutputStreamWriter(saveFileStream);
+                outputStream = new OutputStreamWriter(saveFileStream, "UTF-8");
                 svgGenerator.stream(outputStream, true);
+                outputStream.flush();
             }
         }
         catch (IOException ex) {
             ex.printStackTrace();
         }
         finally {
-            if(saveFileStream != null) {
-                try {
+            try {
+               if(saveFileStream != null) {               
                     saveFileStream.close();
                 }
-                catch (IOException ex) {
-                    ex.printStackTrace();
+                if(outputStream != null) {
+                    outputStream.close();
                 }
+            }
+            catch (IOException ex) {
+                    ex.printStackTrace();
             }
         }
     }
