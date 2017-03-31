@@ -6,19 +6,21 @@
 package Listeners;
 
 import Views.Canvas;
+import org.apache.batik.dom.GenericDOMImplementation;
+import org.apache.batik.svggen.SVGGeneratorContext;
+import org.apache.batik.svggen.SVGGraphics2D;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import org.apache.batik.dom.GenericDOMImplementation;
-import org.apache.batik.svggen.SVGGeneratorContext;
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
+import java.io.OutputStreamWriter;
 
 /**
  *
@@ -56,7 +58,8 @@ public class SvgSaveButtonListener implements ActionListener {
                 saveFile = saveDialog.getSelectedFile();
                 image = canvas.getImage();
                 saveFileStream = new FileOutputStream(saveFile);
-                //svgGenerator.stream(saveFileStream);
+                OutputStreamWriter outputStream = new OutputStreamWriter(saveFileStream);
+                svgGenerator.stream(outputStream, true);
             }
         }
         catch (IOException ex) {
