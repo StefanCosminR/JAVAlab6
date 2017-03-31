@@ -49,8 +49,6 @@ public class Canvas extends JPanel {
     }
 
     private void drawPolygon(Graphics g, Color color, RegularPolygon polygon) {
-        // g.setColor(color);
-        // g.fillPolygon(polygon);
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
         g2.fillPolygon(polygon);
@@ -147,7 +145,8 @@ public class Canvas extends JPanel {
         return s.getRowPackedCopy();
     }
 
-    public void drawFunctionGraph(String expression) {
+    public void drawFunctionGraph() {
+        
         int test;
         double xValue, yValue;
 
@@ -155,7 +154,7 @@ public class Canvas extends JPanel {
         yValues = new double[FUNCTION_TEST_COUNT];
 
         expressionInput = MathExpressionInput.getInstance();
-
+        expression = expressionInput.getExpression().getText();
         canvasGraphics = (Graphics2D)this.getGraphics();
         canvasImageGraphics = this.getImage().createGraphics();
 
