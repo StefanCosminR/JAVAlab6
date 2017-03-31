@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Listeners.BuildGraphicButtonListener;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,9 +28,10 @@ public class MathExpressionInput extends JPanel {
         expression = new JTextField(50);
         buildGraphicButton = new JButton("Build Graphic");
         
-        this.add(expressionLabel);
         this.setLayout(new FlowLayout());
+        this.add(expressionLabel);
         this.add(expression);
+        buildGraphicButton.addActionListener(new BuildGraphicButtonListener(this));
         this.add(buildGraphicButton);
     }
     
