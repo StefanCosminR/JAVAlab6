@@ -17,14 +17,19 @@ import java.awt.event.ActionListener;
 public class BuildGraphicButtonListener implements ActionListener {
 
     private Canvas canvas;
+    private MathExpressionInput expressionInput;
     
     public BuildGraphicButtonListener(MathExpressionInput mathExpressionInput) {
         canvas = Canvas.getInstance();
+        this.expressionInput = mathExpressionInput;
     }
-           
+        
+
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        canvas.drawFunctionGraph();
+        String expression = expressionInput.getExpression().getText();
+        canvas.drawFunctionGraph(expression);
     }
     
 }
