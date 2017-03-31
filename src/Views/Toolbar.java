@@ -24,8 +24,8 @@ public class Toolbar extends JPanel {
     private void initToolbarComponents() {
         drawButton = new JButton("Draw");
 
-        SpinnerModel sidesModel = new SpinnerNumberModel(0, 0, 10, 1);
-        SpinnerModel shapesModel = new SpinnerNumberModel(0, 0, 10, 1);
+        SpinnerModel sidesModel = new SpinnerNumberModel(3, 3, 10, 1);
+        SpinnerModel shapesModel = new SpinnerNumberModel(1, 0, 10, 1);
         SpinnerModel strokeModel = new SpinnerNumberModel(0, 0, 10, .1);
 
         sidesNumber = new JSpinner(sidesModel);

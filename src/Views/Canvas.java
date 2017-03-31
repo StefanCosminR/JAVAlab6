@@ -49,7 +49,7 @@ public class Canvas extends JPanel {
 
         int randomColor = random.nextInt(0xFFFFFF);
         int radius = this.getHeight() / 2 - random.nextInt(this.getHeight() / 2 - 1);
-        int sides = random.nextInt(10);
+        int sides = random.nextInt(7) + 3;
         RegularPolygon polygon = new RegularPolygon(x, y, radius, sides);
         Color color = new Color(randomColor);
         
